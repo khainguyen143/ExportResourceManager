@@ -16,13 +16,13 @@ namespace ExportVideoManager.Models.ProcessingResource
         public long Size { get; set; }
 
         // download sources
-        public List<string> DownloadSourceUrls { get; set; }
+        public List<string> DownloadSourceUrls { get; set; } // lấy từ app tài nguyên
 
         // credit
-        public bool RequiredCredit { get; set; }
-        public string Credit { get; set; }
+        public bool RequiredCredit { get; set; } // lấy từ app tài nguyên
+        public string Credit { get; set; } // lấy từ app tài nguyên
 
-        public List<EditResource> EditorResources { get; set; } // tài nguyên này có thể có trong nhiều tài nguyên tích hợp khác nhau
+        public List<ResourceEditorial> ResourceEditorials { get; set; } 
 
         public void SetResourceFileId(string resourceFileId)
         {

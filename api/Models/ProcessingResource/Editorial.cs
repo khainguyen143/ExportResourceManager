@@ -14,7 +14,7 @@ namespace ExportVideoManager.Models.ProcessingResource
         public string EditingSoftware { get; set; }  // phần mềm chỉnh sửa
         public List<string> UsedByUrls { get; set; } // sau này sẽ check theo url để lấy tên file trên youtube nếu resourceFileId == ResourceFileId thì lưu url lại để tiện sau này truy xuất nguồn gốc bằng url 
         public ResourceType ResourceType { get; set; } 
-        public List<EditResource> EditResources { get; set; }
+        public List<ResourceEditorial> EditResources { get; set; }
 
         //------------------------------------------
         public string CreatedByUserId { get; set; }

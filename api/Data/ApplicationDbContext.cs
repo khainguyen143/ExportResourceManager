@@ -28,7 +28,7 @@ namespace API.Data
         public DbSet<UserRestriction> UserRestriction { get; set; }
         /*-------------------------------------------------------------------------------------------------------------------------*/
 
-        public DbSet<EditResource> EditResources { get; set; }
+        public DbSet<ResourceEditorial> EditResources { get; set; }
         public DbSet<Editorial> IntergratedResources { get; set; }
         public DbSet<Resources> PrimordialResources { get; set; }
         //public DbSet<EditIntergratedResources> EditIntergratedResources { get; set; }
@@ -97,25 +97,16 @@ namespace API.Data
             builder.Entity<UserRestriction>().HasOne(entity => entity.CreatedByUser).WithMany();
             builder.Entity<UserRestriction>().HasOne(entity => entity.UpdatedByUser).WithMany();
 
-            builder.Entity<EditResource>().HasKey(entity => new { entity.IntergratedResourcesId, entity.PrimordialResourcesId });
-            builder.Entity<EditResource>()
-                .HasOne(entity => entity.IntergratedResources)
+            builder.Entity<ResourceEditorial>().HasKey(entity => new { entity.EditorialId, entity.ResourcesId });
+            builder.Entity<ResourceEditorial>()
+                .HasOne(entity => entity.Editorial)
                 .WithMany(entity => entity.EditResources)
-                .HasForeignKey(entity => entity.IntergratedResourcesId);
-            builder.Entity<EditResource>()
-                .HasOne(entity => entity.PrimordialResources)
+                .HasForeignKey(entity => entity.EditorialId);
+            builder.Entity<ResourceEditorial>()
+                .HasOne(entity => entity.Resources)
                 .WithMany(entity => entity.EditorResources)
-                .HasForeignKey(entity => entity.PrimordialResourcesId);
+                .HasForeignKey(entity => entity.ResourcesId);
 
-            /*builder.Entity<EditIntergratedResources>().HasKey(entity => new { entity.ParentIntergratedResourcesId, entity.SubIntergratedResourcesId });
-            builder.Entity<EditIntergratedResources>()
-                .HasOne(entity => entity.ParentIntergratedResources)
-                .WithMany(entity => entity.ParthEditIntergratedResources)
-                .HasForeignKey(entity => entity.ParentIntergratedResourcesId);
-            builder.Entity<EditIntergratedResources>()
-                .HasOne(entity => entity.SubIntergratedResources)
-                .WithMany(entity => entity.SubEditIntergratedResources)
-                .HasForeignKey(entity => entity.SubIntergratedResourcesId);*/
         }
 
         private void ConfigDefaultValue(ModelBuilder builder)

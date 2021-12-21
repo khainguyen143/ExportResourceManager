@@ -2,7 +2,7 @@
 
 namespace ExportVideoManager.Models.ProcessingResource
 {
-    public class EditResource
+    public class ResourceEditorial
     {
         public string EditorialId { get; set; }
         public Editorial Editorial { get; set; }
