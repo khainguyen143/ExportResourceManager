@@ -100,11 +100,11 @@ namespace API.Data
             builder.Entity<ResourceEditorial>().HasKey(entity => new { entity.EditorialId, entity.ResourcesId });
             builder.Entity<ResourceEditorial>()
                 .HasOne(entity => entity.Editorial)
-                .WithMany(entity => entity.EditResources)
+                .WithMany(entity => entity.ResourceEditorials)
                 .HasForeignKey(entity => entity.EditorialId);
             builder.Entity<ResourceEditorial>()
                 .HasOne(entity => entity.Resources)
-                .WithMany(entity => entity.EditorResources)
+                .WithMany(entity => entity.ResourceEditorials)
                 .HasForeignKey(entity => entity.ResourcesId);
 
         }
