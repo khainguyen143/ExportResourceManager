@@ -29,8 +29,8 @@ namespace API.Data
         /*-------------------------------------------------------------------------------------------------------------------------*/
 
         public DbSet<ResourceEditorial> EditResources { get; set; }
-        public DbSet<Editorial> IntergratedResources { get; set; }
-        public DbSet<Resources> PrimordialResources { get; set; }
+        public DbSet<Editing> IntergratedResources { get; set; }
+        public DbSet<Resource> PrimordialResources { get; set; }
         //public DbSet<EditIntergratedResources> EditIntergratedResources { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -117,7 +117,7 @@ namespace API.Data
         private void ConfigConversion(ModelBuilder builder)
         {
             // video
-            builder.Entity<Editorial>().Property(entity => entity.UsedByUrls)
+            builder.Entity<Editing>().Property(entity => entity.UsedByUrls)
                 .HasConversion(
                     urls => JsonConvert.SerializeObject(urls),
                     urls => JsonConvert.DeserializeObject<List<string>>(urls));
@@ -125,7 +125,7 @@ namespace API.Data
 
         private void ConfigGlobalFilter(ModelBuilder builder)
         {
-            builder.Entity<Editorial>().HasQueryFilter(e => !e.IsDeleted);
+            builder.Entity<Editing>().HasQueryFilter(e => !e.IsDeleted);
 
         }
 

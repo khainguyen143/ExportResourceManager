@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace ExportVideoManager.Models.ProcessingResource
 {
-    public class Editorial : BaseModel, ISoftDeletableModel, ILoggableUserActionModel
+    public class Editing : BaseModel, ISoftDeletableModel, ILoggableUserActionModel
     {
         public string Title { get; set; }
         public string Description { get; set; }

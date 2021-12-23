@@ -7,13 +7,16 @@ using System.Collections.Generic;
 namespace ExportVideoManager.Models.ProcessingResource
 {
     // lưu các thông tin về tài nguyên để nếu mất dữ liệu phía app tài nguyên 
-    public class Resources : BaseModel
+    public class Resource : BaseModel
     {
         public string Description { get; set; }
         public string ResourceFileId { get; set; }
         public ResourceType ResourceType { get; set; }
         public bool IsProvenOrigin { get; set; } // là tài nguyên được cty quản lý hay chưa
         public long Size { get; set; }
+        public long StartTime { get; set; }
+        public long EndTime { get; set; }
+
 
         // download sources
         public List<string> DownloadSourceUrls { get; set; } // lấy từ app tài nguyên
@@ -22,7 +25,7 @@ namespace ExportVideoManager.Models.ProcessingResource
         public bool RequiredCredit { get; set; } // lấy từ app tài nguyên
         public string Credit { get; set; } // lấy từ app tài nguyên
 
-        public List<ResourceEditorial> ResourceEditorials { get; set; } 
+        public List<ResourceEditorial> ResourceEditorials { get; set; }
 
         public void SetResourceFileId(string resourceFileId)
         {
